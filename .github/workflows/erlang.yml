@@ -1,0 +1,39 @@
+name: Erlang CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    container:
+      image: erlang:22.0.7
+      env:
+        ORACLE_HOME: /u01/app/oracle/product/11.2.0/xe
+        ORACLE_SID: XE
+        LD_LIBRARY_PATH: $ORACLE_HOME/lib/${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
+        PATH: $PATH:$ORACLE_HOME/bin/
+      
+    steps:
+    - uses: actions/checkout@v2
+    - name: Fetch oracle 1
+      run: wget https://raw.githubusercontent.com/Vincit/travis-oracledb-xe/master/accept_the_license_agreement_for_oracledb_xe_11g_and_install.sh
+    - name: Fetch oracle 2
+      run: ./accept_the_license_agreement_for_oracledb_xe_11g_and_install.sh
+    - name: Fetch lcov
+      run: wget http://ftp.de.debian.org/debian/pool/main/l/lcov/lcov_1.11.orig.tar.gz
+    - name: Unzip lcov
+      run: tar xf lcov_1.11.orig.tar.gz
+    - name: Install lcov
+      run: sudo make -C lcov-1.11/ install
+      
+#     - name: Compile
+#       run: rebar3 compile
+#     - name: Run tests
+#       run: rebar3 do eunit, ct
