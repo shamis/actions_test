@@ -25,15 +25,17 @@ jobs:
     - name: Fetch oracle 1
       run: wget https://raw.githubusercontent.com/Vincit/travis-oracledb-xe/master/accept_the_license_agreement_for_oracledb_xe_11g_and_install.sh
     - name: Fetch oracle 2
-      run: chmod +x accept_the_license_agreement_for_oracledb_xe_11g_and_install.sh
-    - name: Fetch oracle 3
-      run: sudo ./accept_the_license_agreement_for_oracledb_xe_11g_and_install.sh
+      run: |
+        chmod +x accept_the_license_agreement_for_oracledb_xe_11g_and_install.sh \
+        sudo ./accept_the_license_agreement_for_oracledb_xe_11g_and_install.sh 
     - name: Fetch lcov
       run: wget http://ftp.de.debian.org/debian/pool/main/l/lcov/lcov_1.11.orig.tar.gz
-    - name: Unzip lcov
-      run: tar xf lcov_1.11.orig.tar.gz
+#     - name: Unzip lcov
+#       run: tar xf lcov_1.11.orig.tar.gz
+#     - name: Install lcov
+#       run: sudo make -C lcov-1.11/ install
     - name: Install lcov
-      run: sudo make -C lcov-1.11/ install
+      run: sudo apt-get install lcov
       
 #     - name: Compile
 #       run: rebar3 compile
