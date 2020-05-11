@@ -24,7 +24,7 @@ jobs:
     - uses: actions/checkout@v2 
     - name: Fetch oracle 
       run: |
-        wget https://raw.githubusercontent.com/Vincit/travis-oracledb-xe/master/accept_the_license_agreement_for_oracledb_xe_11g_and_install.sh
+        wget https://raw.githubusercontent.com/KonnexionsGmbH/travis-oracledb-xe/master/accept_the_license_agreement_for_oracledb_xe_11g_and_install.sh
         chmod +x accept_the_license_agreement_for_oracledb_xe_11g_and_install.sh
         sudo ./accept_the_license_agreement_for_oracledb_xe_11g_and_install.sh 
 #     - name: Fetch oracle 2
