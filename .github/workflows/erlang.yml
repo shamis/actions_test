@@ -27,7 +27,7 @@ jobs:
     - name: Fetch oracle 2
       run: |
         chmod +x accept_the_license_agreement_for_oracledb_xe_11g_and_install.sh \
-        sudo ./accept_the_license_agreement_for_oracledb_xe_11g_and_install.sh 
+        ./accept_the_license_agreement_for_oracledb_xe_11g_and_install.sh 
     - name: Fetch lcov
       run: wget http://ftp.de.debian.org/debian/pool/main/l/lcov/lcov_1.11.orig.tar.gz
 #     - name: Unzip lcov
